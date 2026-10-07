@@ -1,0 +1,21 @@
+BASIC:
+  PROTOCOL_VERSION: 2
+  BAUDRATE: 1000000 # 1M bps
+
+HAND:
+  NAME: 'GX16'
+  NUM: 16
+  THUMB_IDS: [1, 2, 3, 4]
+  INDEX_IDS: [5, 6, 7, 8]
+  MID_IDS: [9, 10, 11, 12]
+  RING_IDS: [13, 14, 15, 16]
+  JOINT_MOTOR_DIRECTIONS: [1, 1, -1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, -1] # 1=same as URDF, -1=opposite to URDF
+
+ExtendedPos:
+  Motor1: 
+    Pos_kp: 300
+    Pos_kd: 100
+    Pos_ki: 10
+    Profile_vel: 800 # unit 0.229 rev/min
+    Profile_acc: 200 # unit 214.58 rev/min2
+ 

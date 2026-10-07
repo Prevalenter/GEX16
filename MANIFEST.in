@@ -1,0 +1,7 @@
+include README.md README.zh-CN.md THIRD_PARTY_NOTICES.md
+recursive-include docs *.md *.gif *.mp4
+recursive-include tests *.py
+global-exclude __pycache__ *.py[cod] .DS_Store *.pth *.npy *.npz
+include src/resources/retarget/last.pth
+include src/resources/retarget/calibration.npz
+include src/resources/retarget/reference.npy

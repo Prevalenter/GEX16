@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gex16"
+version = "0.1.0"
+description = "EX16/GX16 hardware control, Viser visualization and GEX Retarget"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.23,<3", "PyYAML>=6", "pyserial>=3.5", "pyzmq>=25"]
+
+[project.optional-dependencies]
+visualization = ["viser>=0.2,<2", "yourdfpy>=0.0.56", "trimesh>=4"]
+retarget-viewer = ["torch>=2.2,<3", "viser>=0.2,<2", "yourdfpy>=0.0.56", "trimesh>=4"]
+retarget = ["torch>=2.2,<3", "sapien>=2.2,<3", "viser>=0.2,<2", "yourdfpy>=0.0.56", "trimesh>=4"]
+dev = ["pytest>=7", "build", "ruff"]
+
+[project.scripts]
+gex-ex16 = "ex16:main"
+gex-gx16 = "gx16:main"
+gex-view = "viewer:main"
+gex-teleop = "teleop:main"
+gex-retarget-view = "retarget_viewer:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["ex16", "gx16", "viewer", "teleop", "retarget_viewer", "device", "motor", "transport", "paths"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["retargeting*", "_vendor*", "resources"]
+namespaces = false
+
+[tool.setuptools.package-data]
+resources = ["**/*.yaml", "**/*.json", "**/*.urdf", "**/*.STL", "**/*.stl", "retarget/last.pth", "retarget/calibration.npz", "retarget/reference.npy"]
+
+[tool.setuptools.data-files]
+"share/doc/gex16" = ["README.md", "README.zh-CN.md", "THIRD_PARTY_NOTICES.md"]
+"share/doc/gex16/docs" = ["docs/*.md"]
+"share/doc/gex16/docs/media" = ["docs/media/*.gif", "docs/media/*.mp4"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+exclude = ["src/_vendor/dynamixel_sdk"]

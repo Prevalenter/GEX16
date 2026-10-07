@@ -1,0 +1,50 @@
+{
+    "name": "gx16",
+    "urdf_path": "collision.urdf",
+    "base_link": "base_link",
+    "self_collision_filter": {
+        "enabled": true,
+        "penetration_threshold": 0.0005,
+        "max_attempts_multiplier": 50
+    },
+    "joint_order": [
+        "joint1", "joint2", "joint3", "joint4",
+        "joint5", "joint6", "joint7", "joint8",
+        "joint9", "joint10", "joint11", "joint12",
+        "joint13", "joint14", "joint15", "joint16"
+    ],
+    "fingertip_link": [
+        {
+            "name": "index",
+            "link": "link19",
+            "contact_link": "link8",
+            "joint": ["joint5", "joint6", "joint7", "joint8"],
+            "center_offset": [0.0, 0.0, 0.0],
+            "human_hand_id": 8
+        },
+        {
+            "name": "middle",
+            "link": "link20",
+            "contact_link": "link12",
+            "joint": ["joint9", "joint10", "joint11", "joint12"],
+            "center_offset": [0.0, 0.0, 0.0],
+            "human_hand_id": 12
+        },
+        {
+            "name": "ring",
+            "link": "link21",
+            "contact_link": "link17",
+            "joint": ["joint13", "joint14", "joint15", "joint16"],
+            "center_offset": [0.0, 0.0, 0.0],
+            "human_hand_id": 16
+        },
+        {
+            "name": "thumb",
+            "link": "link18",
+            "contact_link": "link4",
+            "joint": ["joint1", "joint2", "joint3", "joint4"],
+            "center_offset": [0.0, 0.0, 0.0],
+            "human_hand_id": 4
+        }
+    ]
+}
